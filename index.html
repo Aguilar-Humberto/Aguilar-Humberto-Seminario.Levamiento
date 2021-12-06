@@ -480,7 +480,9 @@
             layer: cluster_SITIOSDECBA_4,
             initial: false,
             hideMarkerOnCollapse: true,
-            propertyName: 'SITIO'}));
+            propertyName: 'SITIO',
+            moveToLocation: function(latlng, title, map) {
+            map.setView(latlng, 20);}}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
         </script>
