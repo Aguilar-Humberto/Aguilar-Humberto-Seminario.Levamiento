@@ -97,7 +97,7 @@
             height: 30px !important;
         }
         .leaflet-container .leaflet-control-search{
-            background: none !important;
+            background: white !important;
         }
         .leaflet-control-search .search-input {
             margin: 0px 0px 0px 0px !important;
