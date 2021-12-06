@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         #map {
@@ -33,13 +34,15 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
+        <script src="js/leaflet-search.js"></script>
         <script src="data/CBA_3.js"></script>
         <script src="data/SITIOSDECBA_4.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-38.92657026652468,-71.19029748788188],[-27.859507266524687,-53.86793800962102]]);
-        var hash = new L.Hash(map)
+        }).fitBounds([[-34.98287243485605,-68.84293571173617],[-29.449340934856053,-60.18175597260575]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('Humberto Aguilar');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var measureControl = new L.Control.Measure({
             position: 'topleft',
@@ -461,7 +464,7 @@
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_SITIOSDECBA_4_0(feature));
+                return L.marker(latlng, style_SITIOSDECBA_4_0(feature));
             },
         });
         var cluster_SITIOSDECBA_4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
@@ -473,7 +476,13 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/SITIOSDECBA_4.png" /> SITIOS DE CBA': cluster_SITIOSDECBA_4,'<img src="legend/CBA_3.png" /> CBA': layer_CBA_3,"OpenTopoMap": layer_OpenTopoMap_2,"Google.cn Satellite": layer_GooglecnSatellite_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
         setBounds();
+        map.addControl(new L.Control.Search({
+            layer: cluster_SITIOSDECBA_4,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'SITIO'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
         </script>
     </body>
 </html>
-
