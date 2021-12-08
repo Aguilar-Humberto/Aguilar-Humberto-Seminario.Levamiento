@@ -485,6 +485,10 @@
             map.setView(latlng, 20);}}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
+        
+        L.control.scale({ position: 'bottomright'}).addTo(map);
+            
+            
         </script>
     </body>
 </html>
